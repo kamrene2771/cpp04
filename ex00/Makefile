@@ -1,15 +1,25 @@
-NAME = ex02
+NAME = ex00
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -f
 
-SRC = AAnimal.cpp Dog.cpp Cat.cpp main.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp  
+SRC = main.cpp \
+      Animal.cpp \
+	  Dog.cpp \
+	  Cat.cpp \
+	  WrongAnimal.cpp \
+	  WrongCat.cpp	
 
 OBJ = $(SRC:.cpp=.o)
 
-HEADERS = AAnimal.hpp Dog.hpp Cat.hpp WrongAnimal.hpp WrongCat.hpp Brain.hpp
+HEADERS = Animal.hpp \
+		  Dog.hpp \
+		  Cat.hpp \
+		  WrongAnimal.hpp \
+		  WrongCat.hpp
+
 
 %.o: %.cpp $(HEADERS)
 	$(CXX) $(CXXFLAGS) -c $< -o $@

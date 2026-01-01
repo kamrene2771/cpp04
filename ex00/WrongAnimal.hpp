@@ -4,20 +4,15 @@
 #include <iostream>
 #include <string>
 
-class WrongAnimal
-{
+class WrongAnimal {
 protected:
     std::string type;
 
 public:
     WrongAnimal();
-    WrongAnimal(const WrongAnimal& other);
-    WrongAnimal& operator=(const WrongAnimal& other);
-    ~WrongAnimal();
+    ~WrongAnimal(); 
 
     std::string getType() const;
-
-    // Not virtual on purpose
     void makeSound() const;
 };
 

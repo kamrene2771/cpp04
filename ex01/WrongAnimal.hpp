@@ -1,11 +1,9 @@
 #ifndef WRONGANIMAL_HPP
 #define WRONGANIMAL_HPP
 
-#include <iostream>
 #include <string>
 
-class WrongAnimal
-{
+class WrongAnimal {
 protected:
     std::string type;
 
@@ -16,9 +14,7 @@ public:
     ~WrongAnimal();
 
     std::string getType() const;
-
-    // Not virtual on purpose
-    void makeSound() const;
+    void makeSound() const; // NOT virtual (purpose of the exercise)
 };
 
 #endif

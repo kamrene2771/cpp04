@@ -1,11 +1,9 @@
 #ifndef BRAIN_HPP
 #define BRAIN_HPP
 
-#include <iostream>
 #include <string>
 
-class Brain
-{
+class Brain {
 private:
     std::string ideas[100];
 
@@ -16,7 +14,7 @@ public:
     ~Brain();
 
     void setIdea(int idx, const std::string& idea);
-    std::string getIdea(int idx) const;
+    const std::string& getIdea(int idx) const;
 };
 
 #endif

@@ -3,15 +3,14 @@
 
 #include "WrongAnimal.hpp"
 
-class WrongCat : public WrongAnimal
-{
+class WrongCat : public WrongAnimal {
 public:
     WrongCat();
     WrongCat(const WrongCat& other);
     WrongCat& operator=(const WrongCat& other);
     ~WrongCat();
 
-    void makeSound() const; // still not virtual when called through WrongAnimal*
+    void makeSound() const; // hides, but base isn't virtual
 };
 
 #endif

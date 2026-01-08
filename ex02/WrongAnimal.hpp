@@ -17,7 +17,6 @@ public:
 
     std::string getType() const;
 
-    // Not virtual on purpose
     void makeSound() const;
 };
 

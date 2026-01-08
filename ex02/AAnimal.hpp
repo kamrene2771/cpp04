@@ -6,19 +6,17 @@
 
 class AAnimal
 {
-protected:
-    std::string type;
+    protected:
+        std::string type;
 
-public:
-    AAnimal();
-    AAnimal(const AAnimal& other);
-    AAnimal& operator=(const AAnimal& other);
-    virtual ~AAnimal();
+    public:
+        AAnimal();
+        AAnimal(const AAnimal& other);
+        AAnimal& operator=(const AAnimal& other);
+        virtual ~AAnimal();
 
-    std::string getType() const;
-
-    // Abstract => AAnimal cannot be instantiated
-    virtual void makeSound() const = 0;
+        std::string getType() const;
+        virtual void makeSound() const = 0;
 };
 
 #endif

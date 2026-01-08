@@ -17,7 +17,6 @@ public:
 
     virtual void makeSound() const;
 
-    // helper for tests
     void setIdea(int idx, const std::string& idea);
     std::string getIdea(int idx) const;
 };

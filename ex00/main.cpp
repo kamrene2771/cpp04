@@ -8,35 +8,36 @@
 int main()
 {
     
-    const Animal* meta = new Animal();
-    const Animal* j    = new Dog();
-    const Animal* i    = new Cat();
+    const Animal* not_defined = new Animal();
+    const Animal* dog    = new Dog();
+    const Animal* cat    = new Cat();
 
-    std::cout << meta->getType() << std::endl;
-    std::cout << j->getType() << std::endl;
-    std::cout << i->getType() << std::endl;
+    std::cout << not_defined->getType() << std::endl;
+    std::cout << dog->getType() << std::endl;
+    std::cout << cat->getType() << std::endl;
 
-    i->makeSound();    
-    j->makeSound();    
-    meta->makeSound(); 
-
-
-    delete meta;
-    delete j;
-    delete i;
+    not_defined->makeSound(); 
+    dog->makeSound();    
+    cat->makeSound();    
 
 
-    const WrongAnimal* wrongBase = new WrongAnimal();
-    const WrongAnimal* wrongCatAsBase = new WrongCat();
+    delete not_defined;
+    delete dog;
+    delete cat;
 
-    std::cout << wrongBase->getType() << std::endl;
-    std::cout << wrongCatAsBase->getType() << std::endl;
+    std::cout << "----------------------------------------------------------" << std::endl;
 
-    wrongBase->makeSound();      
-    wrongCatAsBase->makeSound(); 
+    WrongAnimal* wrongbase = new WrongAnimal();
+    WrongAnimal* wrongcat = new WrongCat();
 
-    delete wrongBase;
-    delete wrongCatAsBase;
+    std::cout << wrongbase->getType() << std::endl;
+    std::cout << wrongcat->getType() << std::endl;
+
+    wrongbase->makeSound();      
+    wrongcat->makeSound(); 
+
+    delete wrongbase;
+    delete wrongcat;
 
     return 0;
 }

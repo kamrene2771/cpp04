@@ -14,7 +14,7 @@ public:
     ~WrongAnimal();
 
     std::string getType() const;
-    void makeSound() const; // NOT virtual (purpose of the exercise)
+    void makeSound() const; 
 };
 
 #endif

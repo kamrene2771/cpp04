@@ -6,7 +6,7 @@ Cat::Cat() : Animal(), brain(new Brain()) {
     std::cout << "[Cat] default constructor\n";
 }
 
-Cat::Cat(const Cat& other) : Animal(other), brain(new Brain(*other.brain)) {
+Cat::Cat(const Cat& other) : Animal(other), brain(new Brain(*other.brain)) {    
     std::cout << "[Cat] copy constructor\n";
 }
 

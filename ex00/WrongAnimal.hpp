@@ -13,7 +13,7 @@ public:
     ~WrongAnimal(); 
 
     std::string getType() const;
-    void makeSound() const;
+    virtual void makeSound() const;
 };
 
 #endif

@@ -59,6 +59,13 @@ void Character::equip(AMateria* m)
     if (!m)
         return;
 
+    // Avoid storing the same pointer twice (would lead to double delete in destructor)
+    for (int i = 0; i < 4; ++i)
+    {
+        if (_inv[i] == m)
+            return;
+    }
+
     for (int i = 0; i < 4; ++i)
     {
         if (_inv[i] == 0)

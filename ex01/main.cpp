@@ -18,31 +18,33 @@ static void polymorphism_basic_test() {
 
     delete j;
     delete i;
+    std::cout << "----------------------------------------------------------" << std::endl;
 }
 
 static void wrong_polymorphism_test() {
     std::cout << "\n=== Wrong polymorphism test ===\n";
     const WrongAnimal* w = new WrongCat();
     std::cout << w->getType() << "\n";
-    w->makeSound(); // will call WrongAnimal::makeSound because it's NOT virtual
+    w->makeSound();
     delete w;
+    std::cout << "----------------------------------------------------------" << std::endl;
 }
 
 static void array_delete_test() {
     std::cout << "\n=== Array delete-as-Animal test ===\n";
-    const int N = 10;
-    Animal* animals[N];
+    Animal* animals[10];
 
-    for (int i = 0; i < N; ++i) {
-        if (i < N / 2)
+    for (int i = 0; i < 10; i++) {
+        if (i < 5)
             animals[i] = new Dog();
         else
             animals[i] = new Cat();
     }
 
-    for (int i = 0; i < N; ++i) {
-        delete animals[i]; // must call derived destructors correctly
+    for (int i = 0; i < 10; i++) {
+        delete animals[i]; 
     }
+    std::cout << "----------------------------------------------------------" << std::endl;
 }
 
 static void deep_copy_test() {
@@ -50,8 +52,8 @@ static void deep_copy_test() {
 
     Dog a;
     a.setIdea(0, "I want a bone");
-    Dog b(a); // copy constructor (deep copy)
 
+    Dog b(a);
     a.setIdea(0, "I changed my mind");
 
     std::cout << "Dog a idea[0]: " << a.getIdea(0) << "\n";
@@ -61,7 +63,7 @@ static void deep_copy_test() {
     c.setIdea(1, "I want tuna");
 
     Cat d;
-    d = c; // assignment (deep copy)
+    d = c; 
     c.setIdea(1, "Actually, nap time");
 
     std::cout << "Cat c idea[1]: " << c.getIdea(1) << "\n";
@@ -73,7 +75,5 @@ int main() {
     wrong_polymorphism_test();
     array_delete_test();
     deep_copy_test();
-
-    std::cout << "\n(Use valgrind/leaks checker to confirm no leaks.)\n";
     return 0;
 }

@@ -57,12 +57,10 @@ void MateriaSource::learnMateria(AMateria* m)
     {
         if (_templates[i] == 0)
         {
-            // store a copy (template). Ownership of `m` stays with the caller.
             _templates[i] = m->clone();
             return;
         }
     }
-    // full -> nothing happens
 }
 
 AMateria* MateriaSource::createMateria(std::string const & type)

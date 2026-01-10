@@ -15,7 +15,6 @@ AMateria& AMateria::operator=(const AMateria& other)
 {
     if (this != &other)
     {
-        // Copying the type doesn't make sense on assignment (keep current _type)
         this->_xp = other._xp;
     }
     return *this;

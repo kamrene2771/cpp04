@@ -24,6 +24,4 @@ public:
     virtual void use(ICharacter& target);
 };
 
-//why use const in getType and not in get XP
-
 #endif

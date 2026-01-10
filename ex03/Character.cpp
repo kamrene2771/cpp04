@@ -59,7 +59,7 @@ void Character::equip(AMateria* m)
     if (!m)
         return;
 
-    // Avoid storing the same pointer twice (would lead to double delete in destructor)
+    //storing the same pointer twice 
     for (int i = 0; i < 4; ++i)
     {
         if (_inv[i] == m)
@@ -74,7 +74,7 @@ void Character::equip(AMateria* m)
             return;
         }
     }
-    // inventory full -> nothing happens
+    //inv full return
 }
 
 void Character::unequip(int idx)
@@ -84,7 +84,7 @@ void Character::unequip(int idx)
     if (_inv[idx] == 0)
         return;
 
-    // MUST NOT delete the Materia (ownership goes back to caller)
+    // MUST NOT delete the Materia gets deleted by caller
     _inv[idx] = 0;
 }
 

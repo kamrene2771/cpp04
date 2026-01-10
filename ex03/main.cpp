@@ -2,6 +2,7 @@
 #include "Ice.hpp"
 #include "Cure.hpp"
 #include "Character.hpp"
+#include <iostream>
 
 int main()
 {
@@ -21,10 +22,18 @@ int main()
     tmp = src->createMateria("cure");
     me->equip(tmp);
 
+    AMateria* tmp1;
+    tmp1 = src->createMateria("ice");
     ICharacter* bob = new Character("bob");
+
+    bob->equip(tmp1);
 
     me->use(0, *bob);
     me->use(1, *bob);
+    bob->use(0, *me);
+
+    std::cout << tmp1->getXP() << std::endl;
+
 
     delete bob;
     delete me;

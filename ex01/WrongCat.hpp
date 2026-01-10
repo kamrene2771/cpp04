@@ -10,7 +10,7 @@ public:
     WrongCat& operator=(const WrongCat& other);
     ~WrongCat();
 
-    void makeSound() const; // hides, but base isn't virtual
+    void makeSound() const;
 };
 
 #endif

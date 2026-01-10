@@ -38,6 +38,5 @@ int main()
 
     delete wrongbase;
     delete wrongcat;
-
     return 0;
 }

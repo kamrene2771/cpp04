@@ -2,67 +2,75 @@
 #include "Cat.hpp"
 #include "WrongCat.hpp"
 
-static void deepCopyTest()
-{
-    std::cout << "\n--- Deep copy test (Dog) ---" << std::endl;
-
-    Dog a;
-    a.setIdea(0, "I want a bone.");
-
-    Dog b(a); // copy ctor
-    a.setIdea(0, "I changed my mind.");
-
-    std::cout << "a idea[0] = " << a.getIdea(0) << std::endl;
-    std::cout << "b idea[0] = " << b.getIdea(0) << std::endl;
-
-    std::cout << "\n--- Deep copy test (Cat) ---" << std::endl;
-
-    Cat c;
-    c.setIdea(0, "I will ignore you.");
-
-    Cat d;
-    d = c; // assignment
-    c.setIdea(0, "Actually, feed me.");
-
-    std::cout << "c idea[0] = " << c.getIdea(0) << std::endl;
-    std::cout << "d idea[0] = " << d.getIdea(0) << std::endl;
-}
-
-int main()
-{
-    // AAnimal x; // ERROR: cannot instantiate abstract class
-
-    std::cout << "--- Polymorphism test ---" << std::endl;
+static void polymorphism_basic_test() {
+    std::cout << "\n=== Polymorphism basic test ===\n";
     const AAnimal* j = new Dog();
     const AAnimal* i = new Cat();
 
-    std::cout << j->getType() << std::endl;
-    std::cout << i->getType() << std::endl;
+    std::cout << j->getType() << "\n";
+    std::cout << i->getType() << "\n";
 
     i->makeSound();
     j->makeSound();
 
     delete j;
     delete i;
+    std::cout << "----------------------------------------------------------" << std::endl;
+}
 
-    std::cout << "\n--- Array test ---" << std::endl;
+static void wrong_polymorphism_test() {
+    std::cout << "\n=== Wrong polymorphism test ===\n";
+    const WrongAnimal* w = new WrongCat();
+    std::cout << w->getType() << "\n";
+    w->makeSound();
+    delete w;
+    std::cout << "----------------------------------------------------------" << std::endl;
+}
+
+static void array_delete_test() {
+    std::cout << "\n=== Array delete-as-Animal test ===\n";
     AAnimal* animals[10];
 
-    for (int k = 0; k < 5; ++k)
-        animals[k] = new Dog();
-    for (int k = 5; k < 10; ++k)
-        animals[k] = new Cat();
+    for (int i = 0; i < 10; i++) {
+        if (i < 5)
+            animals[i] = new Dog();
+        else
+            animals[i] = new Cat();
+    }
 
-    for (int k = 0; k < 10; ++k)
-        delete animals[k];
+    for (int i = 0; i < 10; i++) {
+        delete animals[i]; 
+    }
+    std::cout << "----------------------------------------------------------" << std::endl;
+}
+static void deep_copy_test() {
+    std::cout << "\n=== Deep copy test ===\n";
 
-    deepCopyTest();
+    Dog a;
+    a.setIdea(0, "I want a bone");
 
-    std::cout << "\n--- WrongAnimal test ---" << std::endl;
-    const WrongAnimal* wa = new WrongCat();
-    std::cout << wa->getType() << std::endl;
-    wa->makeSound(); // will call WrongAnimal::makeSound because it's NOT virtual
-    delete wa;
+    Dog b(a);
+    a.setIdea(0, "I changed my mind");
 
+    std::cout << "Dog a idea[0]: " << a.getIdea(0) << "\n";
+    std::cout << "Dog b idea[0]: " << b.getIdea(0) << "\n";
+
+    Cat c;
+    c.setIdea(1, "I want tuna");
+
+    Cat d;
+    d = c; 
+    c.setIdea(1, "Actually, nap time");
+
+    std::cout << "Cat c idea[1]: " << c.getIdea(1) << "\n";
+    std::cout << "Cat d idea[1]: " << d.getIdea(1) << "\n";
+}
+
+int main()
+{
+    polymorphism_basic_test();
+    wrong_polymorphism_test();
+    array_delete_test();
+    deep_copy_test();
     return 0;
 }

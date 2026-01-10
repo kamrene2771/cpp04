@@ -11,7 +11,7 @@ public:
     WrongCat& operator=(const WrongCat& other);
     ~WrongCat();
 
-    void makeSound() const; // still not virtual when called through WrongAnimal*
+    void makeSound() const; 
 };
 
 #endif
